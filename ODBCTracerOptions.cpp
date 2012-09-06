@@ -174,7 +174,7 @@ int CALLBACK ODBCTraceOptionDlg::ConfigDlgProc(HWND hdlg,WORD wMsg,WPARAM wParam
 		case WM_INITDIALOG:
 		{
 			ODBCTraceOptionDlg *config = (ODBCTraceOptionDlg*)lParam;
-			SetWindowLong(hdlg, DWL_USER, lParam);
+			SetWindowLongPtr(hdlg, DWLP_USER, lParam);
 			config->wnd = hdlg;
 			config->createCheckBoxes();
 
@@ -194,7 +194,7 @@ int CALLBACK ODBCTraceOptionDlg::ConfigDlgProc(HWND hdlg,WORD wMsg,WPARAM wParam
 					char buffer[256];
 					::GetWindowText(GetDlgItem(hdlg, id), buffer, sizeof(buffer));
 
-					ODBCTraceOptionDlg *config = (ODBCTraceOptionDlg*)GetWindowLong(hdlg, DWL_USER);
+					ODBCTraceOptionDlg *config = (ODBCTraceOptionDlg*)GetWindowLong(hdlg, DWLP_USER);
 					bool state = !config->new_options.logFunction(buffer);
 					config->new_options.setLogFunction(buffer, state);
 
@@ -202,7 +202,7 @@ int CALLBACK ODBCTraceOptionDlg::ConfigDlgProc(HWND hdlg,WORD wMsg,WPARAM wParam
 				}
 				else if (id == IDC_CHECK_LOGFILE)
 				{
-					ODBCTraceOptionDlg *config = (ODBCTraceOptionDlg*)GetWindowLong(hdlg, DWL_USER);
+					ODBCTraceOptionDlg *config = (ODBCTraceOptionDlg*)GetWindowLong(hdlg, DWLP_USER);
 					bool state = !config->new_options.fileloggingactivated;
 					config->new_options.fileloggingactivated = state;
 					::CheckDlgButton(hdlg, id, state ? BST_CHECKED : BST_UNCHECKED);				

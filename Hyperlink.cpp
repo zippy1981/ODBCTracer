@@ -66,7 +66,7 @@ bool CHyperlink::create(int resourceid, HWND parent, HINSTANCE ins)
 										pos.x, pos.y, rect.right - rect.left, rect.bottom - rect.top, 
 										parent, NULL, ins, NULL);
 
-		::SetWindowLong( wnd, GWL_USERDATA, (LONG)this);
+		::SetWindowLongPtr( wnd, GWLP_USERDATA, (LONG)this);
 		//finally, destroy the old label
 		::DestroyWindow(old);
 	}
@@ -93,7 +93,7 @@ bool CHyperlink::register_class(HINSTANCE ins)
 
 int CHyperlink::WndProc(HWND hwnd,WORD wMsg,WPARAM wParam,LPARAM lParam)
 {
-	CHyperlink *hl = (CHyperlink*)GetWindowLong(hwnd, GWL_USERDATA);
+	CHyperlink *hl = (CHyperlink*)GetWindowLong(hwnd, GWLP_USERDATA);
 
 	switch (wMsg)  
 	{

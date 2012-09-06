@@ -51,7 +51,7 @@ static char THIS_FILE[]=__FILE__;
 // TrayIcon per application
 CSystemTray* CSystemTray::m_pThis = NULL;
 
-const UINT CSystemTray::m_nTimerID    = 4567;
+const UINT_PTR CSystemTray::m_nTimerID    = 4567;
 UINT CSystemTray::m_nMaxTooltipLength  = 64;     // This may change...
 const UINT CSystemTray::m_nTaskbarCreatedMsg = ::RegisterWindowMessage(_T("TaskbarCreated"));
 HWND  CSystemTray::m_hWndInvisible;
@@ -787,7 +787,7 @@ LRESULT CSystemTray::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 }
 #endif
 
-LRESULT CSystemTray::OnTrayNotification(UINT wParam, LONG lParam) 
+LRESULT CSystemTray::OnTrayNotification(WPARAM wParam, LPARAM lParam) 
 {
     //Return quickly if its not for this tray icon
     if (wParam != m_tnd.uID)
@@ -1081,7 +1081,7 @@ void CSystemTray::MinimiseToTray(HWND hWnd)
     }
 
     RemoveTaskbarIcon(hWnd);
-	SetWindowLong(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) &~ WS_VISIBLE);
+	SetWindowLongPtr(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) &~ WS_VISIBLE);
 #endif
 }
 
@@ -1102,7 +1102,7 @@ void CSystemTray::MaximiseFromTray(HWND hWnd)
     else
         ::SetParent(hWnd, NULL);
 
-	SetWindowLong(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) | WS_VISIBLE);
+	SetWindowLongPtr(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) | WS_VISIBLE);
     RedrawWindow(hWnd, NULL, NULL, RDW_UPDATENOW | RDW_ALLCHILDREN | RDW_FRAME |
                        RDW_INVALIDATE | RDW_ERASE);
 

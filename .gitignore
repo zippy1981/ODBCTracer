@@ -1,2 +1,7 @@
 _ReSharper.ODBCTracer/
 _UpgradeReport_Files/
+UpgradeLog.XML
+Debug/
+Release/
+x64/
+*.ncb

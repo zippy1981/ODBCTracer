@@ -5,3 +5,7 @@ Debug/
 Release/
 x64/
 *.ncb
+*.ReSharper.user
+*.suo
+*.vcproj.*.user
+*.bak

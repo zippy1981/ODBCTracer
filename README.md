@@ -1,5 +1,8 @@
 ODBCTracer
 =
+Description
+-
+This is a replacement dll for ODBC Tracing.
 
 Copyright
 -

@@ -1,4 +1,5 @@
 
+  Original version:
   Copyright (C) 2002-2005
   W3L GmbH
   Technologiezentrum Ruhr
@@ -7,6 +8,13 @@
   
   Author: Dipl.Ing. Doga Arinir
   E-Mail: doga.arinir@w3l.de
+ 
+  Modifications:
+  
+  Copyright (C) 2012 
+  Justin Dearing
+  zippy1981@gmail.com
+  http://twitter.com/zippy1981
  
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the author or the company be held liable 
